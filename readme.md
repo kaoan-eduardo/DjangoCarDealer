@@ -25,7 +25,7 @@ Aplicação web desenvolvida com **Django** para o gerenciamento de carros, perm
 
 - **Python 3.x**
 - **Django 4.x**
-- **SQLite3**
+- **SQLite3 e PostgreSQL**
 - **HTML5 & CSS3**
 - **Pillow** (para tratamento de imagens)
 
