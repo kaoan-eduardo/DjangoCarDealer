@@ -73,23 +73,6 @@ python manage.py runserver
 ```
 </small>
 
-#### 📁 Estrutura do Projeto:
-<small>
-
-DjangoCarDealer/
-├── cars/               # App principal (cadastro de carros)
-│   ├── models.py       # Modelo Carro
-│   ├── views.py        # Regras de negócio
-│   ├── forms.py        # Formulários
-│   └── templates/      # Templates HTML
-├── static/             # Arquivos estáticos (CSS, imagens, JS)
-├── media/              # Imagens enviadas via upload
-├── manage.py
-├── requirements.txt
-└── README.md
-
-</small>
-
 #### 🔍 Filtro por Modelo
 <small>
 
