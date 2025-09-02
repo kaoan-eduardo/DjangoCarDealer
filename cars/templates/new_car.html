@@ -8,7 +8,40 @@
     </table>
     <div class="buttons-container">
       <input type="submit" value="Cadastrar" class="btn btn-primary">
-      <button type="button" class="btn" onclick="history.back()">Voltar</button>
+      <button type="button" class="btn" id="back-button">Voltar</button>
     </div>
   </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+      const backButton = document.getElementById("back-button");
+
+      backButton.addEventListener("click", function (e) {
+        let hasData = false;
+
+        const inputs = form.querySelectorAll("input, textarea, select");
+        inputs.forEach(input => {
+          if (
+            input.type !== "submit" &&
+            input.type !== "button" &&
+            input.value.trim() !== ""
+          ) {
+            hasData = true;
+          }
+        });
+
+        if (hasData) {
+          const confirmLeave = confirm("Você preencheu alguns campos. Tem certeza que deseja voltar e perder os dados?");
+          if (!confirmLeave) {
+            e.preventDefault();
+          } else {
+            history.back();
+          }
+        } else {
+          history.back();
+        }
+      });
+    });
+  </script>
 {% endblock %}
