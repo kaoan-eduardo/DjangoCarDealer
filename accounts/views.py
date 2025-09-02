@@ -1,12 +1,17 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
 
 def register_view(request):
     if request.method == 'POST':
         user_form = UserCreationForm(request.POST)
         if user_form.is_valid():
-            user_form.save()
+            user = user_form.save(commit=False)
+            user.is_staff = False
+            user.is_superuser = False
+            user.save()
+            user.user_permissions.clear()
             return redirect('login')
     else:
         user_form = UserCreationForm()
@@ -16,16 +21,16 @@ def register_view(request):
 def login_view(request):
     login_form = AuthenticationForm()
     if request.method == 'POST':
-        username = request.POST["username"]
-        password = request.POST["password"]
+        username = request.POST.get("username")
+        password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect('cars_view')
         else:
             login_form = AuthenticationForm()
-    
-    return render (request, 'login.html', {'login_form': login_form})
+
+    return render(request, 'login.html', {'login_form': login_form})
 
 def logout_view(request):
     logout(request)
