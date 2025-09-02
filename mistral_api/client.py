@@ -7,7 +7,7 @@ load_dotenv()
 api_key = os.getenv("MISTRAL_API_KEY")
 
 def get_car_ia_bio(model, brand, year):
-    prompt = f"Crie uma descrição breve e interessante para um carro {brand} {model} do ano {year}, a descrição deve ter no máximo 100 palavras."
+    prompt = f"Crie uma descrição breve e interessante para um carro {brand} {model} do ano {year}, a descrição deve ter no máximo 30 palavras em português brasileiro."
 
     headers = {
         "Authorization": f"Bearer {api_key}",
