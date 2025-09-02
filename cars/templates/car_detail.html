@@ -81,10 +81,6 @@
     }
   </style>
 
-  <div class="buttons-container">
-    <button class="btn" onclick="history.back()">Voltar</button>
-  </div>
-
   <div class="car-card">
     {% if object.photo and object.photo.name %}
       <img src="{{ object.photo.url }}" alt="{{ object.model }} - {{ object.brand }}">
@@ -107,4 +103,8 @@
       <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-danger">Deletar</a>
     </div>
   {% endif %}
+  <div class="buttons-container">
+    <button class="btn" onclick="history.back()">Voltar</button>
+  </div>
+
 {% endblock %}
