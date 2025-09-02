@@ -81,6 +81,10 @@
     }
   </style>
 
+  <div class="buttons-container">
+    <button class="btn" onclick="history.back()">Voltar</button>
+  </div>
+
   <div class="car-card">
     {% if object.photo and object.photo.name %}
       <img src="{{ object.photo.url }}" alt="{{ object.model }} - {{ object.brand }}">
