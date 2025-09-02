@@ -97,13 +97,15 @@
     {% endif %}
   </div>
 
-  {% if user.is_authenticated and perms.delete_car %}
-    <div class="buttons-container">
-      <a href="{% url 'car_update' pk=object.pk %}" class="btn btn-primary">Editar</a>
-      <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-danger">Deletar</a>
-    </div>
-  {% endif %}
   <div class="buttons-container">
+    {% if user.is_authenticated and perms.DjangoCarDealer.change_car %}
+      <a href="{% url 'car_update' pk=object.pk %}" class="btn btn-primary">Editar</a>
+    {% endif %}
+  
+    {% if user.is_authenticated and perms.DjangoCarDealer.delete_car %}
+      <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-danger">Deletar</a>
+    {% endif %}
+  
     <button class="btn" onclick="history.back()">Voltar</button>
   </div>
 

@@ -22,10 +22,9 @@ def get_car_ia_bio(model, brand, year):
 
     try:
         response = requests.post("https://api.mistral.ai/v1/chat/completions", headers=headers, json=data)
-        response.raise_for_status()  # Lança exceção se o status não for 200
+        response.raise_for_status()
         return response.json()["choices"][0]["message"]["content"].strip()
     except requests.exceptions.RequestException as e:
-        # Log de erro ou fallback
         print(f"Erro na chamada da Mistral AI: {e}")
         return "Descrição automática indisponível no momento."
     except (KeyError, IndexError) as e:
